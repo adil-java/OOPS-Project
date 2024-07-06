@@ -44,9 +44,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.BookName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label5 = new System.Windows.Forms.Label();
-            this.Price = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.BookPrice = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label6 = new System.Windows.Forms.Label();
             this.BookQty = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Id = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -111,7 +113,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(235, 14);
+            this.label1.Location = new System.Drawing.Point(235, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(167, 33);
             this.label1.TabIndex = 0;
@@ -131,7 +133,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(103, 307);
+            this.button4.Location = new System.Drawing.Point(103, 329);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 28;
@@ -141,7 +143,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(190, 307);
+            this.button3.Location = new System.Drawing.Point(190, 329);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 27;
@@ -151,7 +153,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(17, 307);
+            this.button1.Location = new System.Drawing.Point(17, 329);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 26;
@@ -164,7 +166,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(15, 187);
+            this.label4.Location = new System.Drawing.Point(19, 211);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 16);
             this.label4.TabIndex = 21;
@@ -182,7 +184,7 @@
             this.PubName.LineIdleColor = System.Drawing.Color.White;
             this.PubName.LineMouseHoverColor = System.Drawing.Color.RoyalBlue;
             this.PubName.LineThickness = 3;
-            this.PubName.Location = new System.Drawing.Point(108, 158);
+            this.PubName.Location = new System.Drawing.Point(112, 182);
             this.PubName.Margin = new System.Windows.Forms.Padding(0);
             this.PubName.Name = "PubName";
             this.PubName.Size = new System.Drawing.Size(131, 44);
@@ -194,7 +196,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(17, 140);
+            this.label3.Location = new System.Drawing.Point(21, 164);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 16);
             this.label3.TabIndex = 19;
@@ -212,7 +214,7 @@
             this.AuthorName.LineIdleColor = System.Drawing.Color.White;
             this.AuthorName.LineMouseHoverColor = System.Drawing.Color.RoyalBlue;
             this.AuthorName.LineThickness = 3;
-            this.AuthorName.Location = new System.Drawing.Point(108, 112);
+            this.AuthorName.Location = new System.Drawing.Point(112, 136);
             this.AuthorName.Margin = new System.Windows.Forms.Padding(0);
             this.AuthorName.Name = "AuthorName";
             this.AuthorName.Size = new System.Drawing.Size(131, 44);
@@ -225,7 +227,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(17, 96);
+            this.label2.Location = new System.Drawing.Point(21, 120);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 16);
             this.label2.TabIndex = 17;
@@ -233,9 +235,6 @@
             // 
             // BookName
             // 
-            this.BookName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.BookName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.BookName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.BookName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -246,7 +245,7 @@
             this.BookName.LineIdleColor = System.Drawing.Color.White;
             this.BookName.LineMouseHoverColor = System.Drawing.Color.RoyalBlue;
             this.BookName.LineThickness = 3;
-            this.BookName.Location = new System.Drawing.Point(108, 68);
+            this.BookName.Location = new System.Drawing.Point(112, 92);
             this.BookName.Margin = new System.Windows.Forms.Padding(0);
             this.BookName.Name = "BookName";
             this.BookName.Size = new System.Drawing.Size(131, 44);
@@ -259,37 +258,37 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(18, 236);
+            this.label5.Location = new System.Drawing.Point(22, 260);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 16);
             this.label5.TabIndex = 31;
             this.label5.Text = "Price :";
             // 
-            // Price
+            // BookPrice
             // 
-            this.Price.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Price.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.Price.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Price.HintForeColor = System.Drawing.Color.Empty;
-            this.Price.HintText = "";
-            this.Price.isPassword = false;
-            this.Price.LineFocusedColor = System.Drawing.Color.White;
-            this.Price.LineIdleColor = System.Drawing.Color.White;
-            this.Price.LineMouseHoverColor = System.Drawing.Color.RoyalBlue;
-            this.Price.LineThickness = 3;
-            this.Price.Location = new System.Drawing.Point(108, 205);
-            this.Price.Margin = new System.Windows.Forms.Padding(0);
-            this.Price.Name = "Price";
-            this.Price.Size = new System.Drawing.Size(131, 44);
-            this.Price.TabIndex = 30;
-            this.Price.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.BookPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.BookPrice.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.BookPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BookPrice.HintForeColor = System.Drawing.Color.Empty;
+            this.BookPrice.HintText = "";
+            this.BookPrice.isPassword = false;
+            this.BookPrice.LineFocusedColor = System.Drawing.Color.White;
+            this.BookPrice.LineIdleColor = System.Drawing.Color.White;
+            this.BookPrice.LineMouseHoverColor = System.Drawing.Color.RoyalBlue;
+            this.BookPrice.LineThickness = 3;
+            this.BookPrice.Location = new System.Drawing.Point(112, 229);
+            this.BookPrice.Margin = new System.Windows.Forms.Padding(0);
+            this.BookPrice.Name = "BookPrice";
+            this.BookPrice.Size = new System.Drawing.Size(131, 44);
+            this.BookPrice.TabIndex = 30;
+            this.BookPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(18, 280);
+            this.label6.Location = new System.Drawing.Point(22, 304);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 16);
             this.label6.TabIndex = 33;
@@ -307,12 +306,44 @@
             this.BookQty.LineIdleColor = System.Drawing.Color.White;
             this.BookQty.LineMouseHoverColor = System.Drawing.Color.RoyalBlue;
             this.BookQty.LineThickness = 3;
-            this.BookQty.Location = new System.Drawing.Point(108, 249);
+            this.BookQty.Location = new System.Drawing.Point(112, 273);
             this.BookQty.Margin = new System.Windows.Forms.Padding(0);
             this.BookQty.Name = "BookQty";
             this.BookQty.Size = new System.Drawing.Size(131, 44);
             this.BookQty.TabIndex = 32;
             this.BookQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label7.Location = new System.Drawing.Point(20, 80);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 16);
+            this.label7.TabIndex = 34;
+            this.label7.Text = "ID(optional):";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // Id
+            // 
+            this.Id.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Id.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.Id.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.Id.HintForeColor = System.Drawing.Color.Empty;
+            this.Id.HintText = "";
+            this.Id.isPassword = false;
+            this.Id.LineFocusedColor = System.Drawing.Color.LightGray;
+            this.Id.LineIdleColor = System.Drawing.Color.White;
+            this.Id.LineMouseHoverColor = System.Drawing.Color.RoyalBlue;
+            this.Id.LineThickness = 3;
+            this.Id.Location = new System.Drawing.Point(115, 52);
+            this.Id.Margin = new System.Windows.Forms.Padding(0);
+            this.Id.Name = "Id";
+            this.Id.Size = new System.Drawing.Size(131, 44);
+            this.Id.TabIndex = 35;
+            this.Id.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.Id.OnValueChanged += new System.EventHandler(this.Id_OnValueChanged);
             // 
             // BookTbl
             // 
@@ -320,10 +351,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(637, 384);
+            this.Controls.Add(this.Id);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.BookQty);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.Price);
+            this.Controls.Add(this.BookPrice);
             this.Controls.Add(this.BookGridView);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -367,10 +400,12 @@
         private System.Windows.Forms.Label label2;
         private Bunifu.Framework.UI.BunifuMaterialTextbox BookName;
         private System.Windows.Forms.Label label5;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox Price;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox BookPrice;
         private System.Windows.Forms.Label label6;
         private Bunifu.Framework.UI.BunifuMaterialTextbox BookQty;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label7;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox Id;
     }
 }

@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace MyLibraryMS
 {
     public partial class MainForm : Form
     {
+       
         public MainForm()
         {
             InitializeComponent();
@@ -74,6 +76,13 @@ namespace MyLibraryMS
                 LoginForm login = new LoginForm();
                 login.Show();
             }
+           
+        }
+
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
            
         }
     }

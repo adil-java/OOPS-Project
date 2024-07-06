@@ -64,12 +64,20 @@ namespace MyLibraryMS
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+         if(e.RowIndex>=0)
+            {
+                DataGridViewRow row = this.BookGridView.Rows[e.RowIndex];
+                BookName.Text = row.Cells[0].Value.ToString();
+                AuthorName.Text = row.Cells[1].Value.ToString();
+                PubName.Text = row.Cells[2].Value.ToString();
+                BookPrice.Text = row.Cells[3].Value.ToString();
+                BookQty.Text = row.Cells[4].Value.ToString();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(BookName.Text) || string.IsNullOrWhiteSpace(BookName.Text) || string.IsNullOrWhiteSpace(AuthorName.Text) || string.IsNullOrWhiteSpace(BookQty.Text))
+            if (BookName.Text == "" || AuthorName.Text == ""||BookQty.Text=="")
             {
                 MessageBox.Show("Missing Information");
                 return;
@@ -79,7 +87,7 @@ namespace MyLibraryMS
                 try
                 {
                     Con.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO BookTbl values('" + BookName.Text + "','" + AuthorName.Text + "','" + BookQty.Text + "')", Con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO BookTbl values('" + BookName.Text + "','" + AuthorName.Text +"','"+PubName.Text+"','" + BookPrice.Text + "','" + BookQty.Text + "')", Con);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Book Added Successfully");
                     Con.Close();
@@ -114,14 +122,14 @@ namespace MyLibraryMS
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(BookName.Text))
+            if(string.IsNullOrWhiteSpace(Id.Text))
             {
                 MessageBox.Show("Enter The Book Id");
             }
             else
             {
                 Con.Open();
-                string query = "DELETE FROM BookTbl where BookName=" + BookName.Text + "";
+                string query = "DELETE FROM BookTbl where BookID=" + Id.Text + "";
                 SqlCommand cmd = new SqlCommand(query, Con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Book Successfully Deleted");
@@ -131,6 +139,16 @@ namespace MyLibraryMS
         }
 
         private void BookName_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Id_OnValueChanged(object sender, EventArgs e)
         {
 
         }

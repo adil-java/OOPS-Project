@@ -16,7 +16,7 @@ namespace MyLibraryMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BookTbl());
+            Application.Run(new LoginForm());
         }
     }
 }
