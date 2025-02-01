@@ -30,9 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Password = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.LoginBtn = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.Password = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.UserName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -44,28 +46,69 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.Password);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.LoginBtn);
-            this.panel1.Controls.Add(this.Password);
             this.panel1.Controls.Add(this.UserName);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(236, 341);
+            this.panel1.Size = new System.Drawing.Size(309, 341);
             this.panel1.TabIndex = 0;
+            // 
+            // Password
+            // 
+            this.Password.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Password.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.Password.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Password.HintForeColor = System.Drawing.Color.Empty;
+            this.Password.HintText = "";
+            this.Password.isPassword = true;
+            this.Password.LineFocusedColor = System.Drawing.Color.Blue;
+            this.Password.LineIdleColor = System.Drawing.Color.Gray;
+            this.Password.LineMouseHoverColor = System.Drawing.Color.Blue;
+            this.Password.LineThickness = 3;
+            this.Password.Location = new System.Drawing.Point(119, 183);
+            this.Password.Margin = new System.Windows.Forms.Padding(4);
+            this.Password.Name = "Password";
+            this.Password.Size = new System.Drawing.Size(136, 33);
+            this.Password.TabIndex = 14;
+            this.Password.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(42, 199);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 16);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Password:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(40, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 16);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "UserName:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(79, 237);
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label2.Location = new System.Drawing.Point(165, 265);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 18);
+            this.label2.Size = new System.Drawing.Size(60, 18);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Clear";
+            this.label2.Text = "Sign Up";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // LoginBtn
@@ -75,7 +118,7 @@
             this.LoginBtn.ActiveFillColor = System.Drawing.Color.White;
             this.LoginBtn.ActiveForecolor = System.Drawing.Color.Black;
             this.LoginBtn.ActiveLineColor = System.Drawing.Color.Black;
-            this.LoginBtn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.LoginBtn.BackColor = System.Drawing.SystemColors.ControlLight;
             this.LoginBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LoginBtn.BackgroundImage")));
             this.LoginBtn.ButtonText = "Login";
             this.LoginBtn.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -84,36 +127,15 @@
             this.LoginBtn.IdleBorderThickness = 1;
             this.LoginBtn.IdleCornerRadius = 20;
             this.LoginBtn.IdleFillColor = System.Drawing.Color.Teal;
-            this.LoginBtn.IdleForecolor = System.Drawing.Color.Honeydew;
+            this.LoginBtn.IdleForecolor = System.Drawing.Color.Transparent;
             this.LoginBtn.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.LoginBtn.Location = new System.Drawing.Point(60, 189);
+            this.LoginBtn.Location = new System.Drawing.Point(67, 251);
             this.LoginBtn.Margin = new System.Windows.Forms.Padding(5);
             this.LoginBtn.Name = "LoginBtn";
             this.LoginBtn.Size = new System.Drawing.Size(86, 43);
             this.LoginBtn.TabIndex = 4;
             this.LoginBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LoginBtn.Click += new System.EventHandler(this.bunifuThinButton21_Click);
-            // 
-            // Password
-            // 
-            this.Password.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Password.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.Password.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Password.HintForeColor = System.Drawing.Color.Empty;
-            this.Password.HintText = "";
-            this.Password.isPassword = false;
-            this.Password.LineFocusedColor = System.Drawing.Color.Blue;
-            this.Password.LineIdleColor = System.Drawing.Color.Gray;
-            this.Password.LineMouseHoverColor = System.Drawing.Color.Blue;
-            this.Password.LineThickness = 3;
-            this.Password.Location = new System.Drawing.Point(24, 131);
-            this.Password.Margin = new System.Windows.Forms.Padding(4);
-            this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(164, 34);
-            this.Password.TabIndex = 3;
-            this.Password.Text = "Password";
-            this.Password.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.Password.OnValueChanged += new System.EventHandler(this.Password_OnValueChanged);
             // 
             // UserName
             // 
@@ -127,12 +149,11 @@
             this.UserName.LineIdleColor = System.Drawing.Color.Gray;
             this.UserName.LineMouseHoverColor = System.Drawing.Color.Blue;
             this.UserName.LineThickness = 3;
-            this.UserName.Location = new System.Drawing.Point(24, 93);
+            this.UserName.Location = new System.Drawing.Point(119, 142);
             this.UserName.Margin = new System.Windows.Forms.Padding(4);
             this.UserName.Name = "UserName";
-            this.UserName.Size = new System.Drawing.Size(164, 30);
+            this.UserName.Size = new System.Drawing.Size(136, 33);
             this.UserName.TabIndex = 2;
-            this.UserName.Text = "Enter Your Name";
             this.UserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.UserName.OnValueChanged += new System.EventHandler(this.bunifuMaterialTextbox1_OnValueChanged);
             // 
@@ -140,7 +161,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(42, 52);
+            this.label1.Location = new System.Drawing.Point(74, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 25);
             this.label1.TabIndex = 0;
@@ -183,9 +204,11 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -198,11 +221,13 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox Password;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox UserName;
         private Bunifu.Framework.UI.BunifuThinButton2 LoginBtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox Password;
+        public Bunifu.Framework.UI.BunifuMaterialTextbox UserName;
     }
 }

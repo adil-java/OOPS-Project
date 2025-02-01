@@ -1,60 +1,55 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
+
 namespace MyLibraryMS
 {
     public partial class LibranianForm : Form
     {
-    SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""G:\oops project\MyLibraryMS\MyLibraryMS\Mylibrarydb.mdf"";Integrated Security=True");
+        private SqlConnection Con;
+
         public LibranianForm()
         {
             InitializeComponent();
+            Con = DatabaseHelper.GetConnection();
         }
-      
-        public void population()
+
+        public void Population()
         {
             Con.Open();
-            string query = "SELECT *FROM LibrarianTbl";
+            string query = "SELECT * FROM LibrarianTbl";
             SqlDataAdapter adapt = new SqlDataAdapter(query, Con);
-            SqlCommandBuilder builer = new SqlCommandBuilder(adapt);
+            SqlCommandBuilder builder = new SqlCommandBuilder(adapt);
             var ds = new DataSet();
             adapt.Fill(ds);
             LibraryGridView.DataSource = ds.Tables[0];
             Con.Close();
-
         }
+
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            MainForm main = new MainForm();
-            main.Show();
-
+            FormHelper.ShowForm(this, new MainForm());
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            FormHelper.MinimizeForm(this);
         }
+
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            FormHelper.ExitApplication();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-                  
         }
-        //Add Librarian
+
+        // Add Librarian
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(LibId.Text) || string.IsNullOrWhiteSpace(LibName.Text) || string.IsNullOrWhiteSpace(Libpass.Text))
+            if (LibId.Text=="" || LibName.Text=="" || Libpass.Text=="")
             {
                 MessageBox.Show("Missing Information");
                 return;
@@ -62,32 +57,32 @@ namespace MyLibraryMS
 
             try
             {
-               
-                
-                    Con.Open();
+                Con.Open();
 
-                    string query = "INSERT INTO LibrarianTbl (LibId, LibName, LibPass, LibPhone) VALUES (@LibId, @LibName, @LibPass, @LibPhone)";
-                    SqlCommand cmd = new SqlCommand(query, Con);
+                string query = "INSERT INTO LibrarianTbl (LibId, LibName, LibPassword, LibPhone) VALUES (@LibId, @LibName, @LibPass, @LibPhone)";
+                SqlCommand cmd = new SqlCommand(query, Con);
 
-                    cmd.Parameters.AddWithValue("@LibId", LibId.Text);
-                    cmd.Parameters.AddWithValue("@LibName", LibName.Text);
-                    cmd.Parameters.AddWithValue("@LibPass", Libpass.Text);
-                    cmd.Parameters.AddWithValue("@LibPhone", Libphone.Text);
+                cmd.Parameters.AddWithValue("@LibId", LibId.Text);
+                cmd.Parameters.AddWithValue("@LibName", LibName.Text);
+                cmd.Parameters.AddWithValue("@LibPass", Libpass.Text);
+                cmd.Parameters.AddWithValue("@LibPhone", Libphone.Text);
 
-                    cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Librarian Added Successfully");
+                MessageBox.Show("Librarian Added Successfully");
 
-                    population(); // Refresh dataGridView1
-                
+                Population(); // Refresh dataGridView1
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
                 // Handle exceptions (logging, etc.)
             }
+            finally
+            {
+                Con.Close();
+            }
         }
-
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -109,56 +104,72 @@ namespace MyLibraryMS
             }
         }
 
-
-
         private void LibranianForm_Load_1(object sender, EventArgs e)
         {
-            population();
+            Population();
         }
 
-        //Delete Librarian
+        // Delete Librarian
         private void button3_Click(object sender, EventArgs e)
         {
-            if(LibId.Text == "")
+            if (LibId.Text == "")
             {
                 MessageBox.Show("Enter The Librarian Information needed to update");
             }
             else
             {
-                
+                try
+                {
                     Con.Open();
-                    string query = "DELETE FROM LibrarianTbl WHERE LibId = '" + LibId.Text + "'";
-                SqlCommand cmd = new SqlCommand(query, Con);
+                    string query = "DELETE FROM LibrarianTbl WHERE LibId = @LibId";
+                    SqlCommand cmd = new SqlCommand(query, Con);
+                    cmd.Parameters.AddWithValue("@LibId", LibId.Text);
                     cmd.ExecuteNonQuery();
-                MessageBox.Show("Librarian Deleted Successfully");
-                Con.Close();
-                population();
-                
-                
+                    MessageBox.Show("Librarian Deleted Successfully");
+                    Population();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    Con.Close();
+                }
             }
         }
-        //Update Librarian
+
+        // Update Librarian
         private void button4_Click(object sender, EventArgs e)
         {
-            if(LibId.Text == "")
+            if (LibId.Text == "")
             {
                 MessageBox.Show("Missing Information");
             }
             else
             {
-                
+                try
+                {
                     Con.Open();
-                    string query = "UPDATE LibrarianTbl SET LibName = '" + LibName.Text + "', LibPassword = '" + Libpass.Text + "', LibPhone = '" + Libphone.Text + "' WHERE LibId = '" + LibId.Text + "'";
+                    string query = "UPDATE LibrarianTbl SET LibName = @LibName, LibPass = @LibPass, LibPhone = @LibPhone WHERE LibId = @LibId";
                     SqlCommand cmd = new SqlCommand(query, Con);
+                    cmd.Parameters.AddWithValue("@LibId", LibId.Text);
+                    cmd.Parameters.AddWithValue("@LibName", LibName.Text);
+                    cmd.Parameters.AddWithValue("@LibPass", Libpass.Text);
+                    cmd.Parameters.AddWithValue("@LibPhone", Libphone.Text);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Librarian Updated Successfully");
+                    Population();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
                     Con.Close();
-                   population();
-                
-               
-            }   
+                }
+            }
         }
-
-      
     }
 }

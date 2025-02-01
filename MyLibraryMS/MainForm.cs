@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -18,7 +11,6 @@ namespace MyLibraryMS
         {
             InitializeComponent();
         }
-
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
@@ -26,64 +18,78 @@ namespace MyLibraryMS
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            FormHelper.ExitApplication();
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            StudentForm student = new StudentForm();
-            student.Show();
+            FormHelper.ShowForm(this, new StudentForm());
+
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            BookTbl book = new BookTbl();
-            book.Show();
+            FormHelper.ShowForm(this, new BookTbl());
         }
 
         private void bunifuFlatButton4_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            LibranianForm libranian = new LibranianForm();
-            libranian.Show();
+            FormHelper.ShowForm(this, new LibranianForm());
         }
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
 
-            this.Hide();
-            IssueBook issuebook = new IssueBook();
-            issuebook.Show();
+            FormHelper.ShowForm(this, new IssueBook());
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            FormHelper.ExitApplication();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            FormHelper.MinimizeForm(this);
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to log out?", "Log Out", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                this.Hide();
-                LoginForm login = new LoginForm();
-                login.Show();
-            }
-           
+            FormHelper.LogOut(this);
         }
+
 
 
         private void label5_Click(object sender, EventArgs e)
         {
+          
+        }
 
-           
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+ 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DashboardForm dashboard = new DashboardForm();
+            dashboard.Show();
+        }
+
+        private void bunifuFlatButton5_Click(object sender, EventArgs e)
+        {
+            FormHelper.ShowForm(this, new ReturnBook());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AboutForm about = new AboutForm();
+            about.Show();
         }
     }
 }

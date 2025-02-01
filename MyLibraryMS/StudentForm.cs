@@ -1,117 +1,112 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyLibraryMS
 {
     public partial class StudentForm : Form
     {
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""G:\oops project\MyLibraryMS\MyLibraryMS\Mylibrarydb.mdf"";Integrated Security=True");
+        SqlConnection Con;
+
         public StudentForm()
         {
             InitializeComponent();
+            Con = DatabaseHelper.GetConnection();
         }
 
-        public void population()
+        public void Population()
         {
-            Con.Open();
-            string query = "SELECT *FROM StudentTbl";
-            SqlDataAdapter adapt = new SqlDataAdapter(query, Con);
-            SqlCommandBuilder builer = new SqlCommandBuilder(adapt);
-            var ds = new DataSet();
-            adapt.Fill(ds);
-            StudentGridView.DataSource = ds.Tables[0];
+            
+                Con.Open();
+                string query = "SELECT * FROM StudentTbl";
+                SqlDataAdapter adapt = new SqlDataAdapter(query, Con);
+                SqlCommandBuilder builder = new SqlCommandBuilder(adapt);
+                var ds = new DataSet();
+                adapt.Fill(ds);
+                StudentGridView.DataSource = ds.Tables[0];
             Con.Close();
-
-       
-        }
+            }
+        
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-
+            FormHelper.ExitApplication();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            MainForm main = new MainForm();
-            main.Show();
+            FormHelper.ShowForm(this, new MainForm());
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            FormHelper.MinimizeForm(this);
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
         {
-            population();
+            Population();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(StudName.Text == "" || StudId.Text == "" || StudDept.Text == "" || StudPhone.Text == "")
+            using (SqlConnection con = DatabaseHelper.GetConnection())
             {
-                MessageBox.Show("Missing Information");
-            }
-            else
-            {
-                Con.Open();
-                SqlCommand cmd = new SqlCommand("insert into StudentTbl values(" + StudId.Text + ",'" + StudName.Text + "','" + StudDept.Text + "','"+ StudSem.Text +"','" + StudPhone.Text + "')", Con);
-                cmd.ExecuteNonQuery();
+                con.Open();
+                string query = "INSERT INTO StudentTbl (StdId, StdName, StdDept, StdPhone, Sem) VALUES (@StdId, @StudName, @StudDept, @StudPhone, @StudSem)";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    
+                    cmd.Parameters.AddWithValue("@StdId", StudId.Text);  
+                    cmd.Parameters.AddWithValue("@StudName", StudName.Text);
+                    cmd.Parameters.AddWithValue("@StudDept", StudDept.Text);
+                    cmd.Parameters.AddWithValue("@StudPhone", StudPhone.Text);
+                    cmd.Parameters.AddWithValue("@StudSem", StudSem.Text);
+
+                    
+                    cmd.ExecuteNonQuery();
+                }
+                con.Close();
+
                 MessageBox.Show("Student Successfully Added");
-                Con.Close();
-                population();
+                Population();
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-        if(StudId.Text=="")
-                   {
-            MessageBox.Show("Enter The Student Id");
-        }
-                   else
+            using (SqlConnection connection = DatabaseHelper.GetConnection())
             {
-            Con.Open();
-            string query = "UPDATE StudentTbl set StdName='" + StudName.Text + "',StdDept='" + StudDept.Text + "',StdPhone='" + StudPhone.Text +"',Sem='"+StudSem.Text+ "' where StdId=" + StudId.Text + "";
-                SqlCommand cmd = new SqlCommand(query, Con);
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE StudentTbl SET StdName = @StudName, StdDept = @StudDept, StdPhone = @StudPhone, Sem = @StudSem WHERE StdId = @StudId", connection);
+                cmd.Parameters.AddWithValue("@StudId", StudId.Text);
+                cmd.Parameters.AddWithValue("@StudName", StudName.Text);
+                cmd.Parameters.AddWithValue("@StudDept", StudDept.Text);
+                cmd.Parameters.AddWithValue("@StudSem", StudSem.Text);
+                cmd.Parameters.AddWithValue("@StudPhone", StudPhone.Text);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Student Successfully Updated");
-                Con.Close();
-            population();
-        }
+                Population();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if(StudId.Text=="")
+            using (SqlConnection connection = DatabaseHelper.GetConnection())
             {
-                MessageBox.Show("Enter The Student Id");
-            }
-            else
-            {
-                Con.Open();
-                string query = "DELETE FROM StudentTbl where StdId=" + StudId.Text + "";
-                SqlCommand cmd = new SqlCommand(query, Con);
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM StudentTbl WHERE StdId = @StudId", connection);
+                cmd.Parameters.AddWithValue("@StudId", StudId.Text);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Student Successfully Deleted");
-                Con.Close();
-                population();
+                Population();
             }
         }
 
         private void StudentGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-          if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.StudentGridView.Rows[e.RowIndex];
                 StudId.Text = row.Cells[0].Value.ToString();

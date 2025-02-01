@@ -9,16 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Xml.Linq;
+using Bunifu.Framework.UI;
 
 namespace MyLibraryMS
 {
     public partial class LoginForm : Form
     {
+        private SqlConnection Con;
         public LoginForm()
         {
             InitializeComponent();
+            Con = DatabaseHelper.GetConnection();
+
         }
-       
+        
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
             
@@ -29,10 +33,9 @@ namespace MyLibraryMS
                 return;
             }
 
-            using (SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""G:\oops project\MyLibraryMS\MyLibraryMS\Mylibrarydb.mdf"";Integrated Security=True"))
+            
             {
-                try
-                {
+                
                     Con.Open();
                     SqlDataAdapter sda = new SqlDataAdapter("select count(*) from LibrarianTbl where LibName=@UserName and LibPassword=@Password", Con);
                     sda.SelectCommand.Parameters.AddWithValue("@UserName", UserName.Text);
@@ -43,23 +46,22 @@ namespace MyLibraryMS
 
                     if (dt.Rows[0][0].ToString() == "1")
                     {
-                        this.Hide();
-                        MainForm main = new MainForm();
-                        main.Show();
+                    Con.Close();
+                    FormHelper.ShowForm(this, new Firstpage());
                     }
                     else
                     {
                         MessageBox.Show("Wrong Username or Password");
+                    Con.Close();
                     }
-                }
-                catch (Exception ex)
-                {
-                    // Handle exceptions
-                    MessageBox.Show("An error occurred: " + ex.Message);
-                }
+                
+               
             }
         }
-       
+        public string Username
+        {
+            get { return UserName.Text; }
+        }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -71,10 +73,10 @@ namespace MyLibraryMS
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            FormHelper.MinimizeForm(this);
         }
 
-        private void bunifuMaterialTextbox1_OnValueChanged(object sender, EventArgs e)
+        public void bunifuMaterialTextbox1_OnValueChanged(object sender, EventArgs e)
         {
 
         }
@@ -86,8 +88,12 @@ namespace MyLibraryMS
 
         private void label2_Click(object sender, EventArgs e)
         {
-            UserName.Text = "";
-            Password.Text = "";
+          FormHelper.ShowForm(this,new SignupForm());
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

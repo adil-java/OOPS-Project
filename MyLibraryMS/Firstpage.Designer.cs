@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Firstpage));
             this.label1 = new System.Windows.Forms.Label();
             this.Myprogress = new Bunifu.Framework.UI.BunifuProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -39,13 +40,13 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Source Sans Pro", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.LightGray;
-            this.label1.Location = new System.Drawing.Point(143, 101);
+            this.label1.Font = new System.Drawing.Font("Source Sans Pro", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label1.Location = new System.Drawing.Point(159, 106);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(367, 92);
+            this.label1.Size = new System.Drawing.Size(338, 80);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Library Management \r\n            System";
+            this.label1.Text = "Book Shop";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Myprogress
@@ -91,6 +92,7 @@
             this.Controls.Add(this.Myprogress);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Firstpage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
